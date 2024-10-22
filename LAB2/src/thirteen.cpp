@@ -9,10 +9,8 @@ private:
     std::vector<unsigned char> digits;
 
 public:
-    // Constructor
     Thirteen() : digits(1, 0) {}
 
-    // Constructor from integer
     Thirteen(unsigned int value) {
         while (value > 0) {
             digits.push_back(value % 13);
@@ -23,13 +21,10 @@ public:
         }
     }
 
-    // Copy Constructor
     Thirteen(const Thirteen &other) : digits(other.digits) {}
 
-    // Move Constructor
     Thirteen(Thirteen &&other) noexcept : digits(std::move(other.digits)) {}
 
-    // Copy Assignment Operator
     Thirteen &operator=(const Thirteen &other) {
         if (this != &other) {
             digits = other.digits;
@@ -37,7 +32,6 @@ public:
         return *this;
     }
 
-    // Move Assignment Operator
     Thirteen &operator=(Thirteen &&other) noexcept {
         if (this != &other) {
             digits = std::move(other.digits);
@@ -45,10 +39,8 @@ public:
         return *this;
     }
 
-    // Destructor
     ~Thirteen() = default;
 
-    // Addition operator
     Thirteen operator+(const Thirteen &other) const {
         Thirteen result;
         result.digits.clear();
@@ -66,7 +58,6 @@ public:
         return result;
     }
 
-    // Function to print Thirteen number
     void print() const {
         for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
             std::cout << static_cast<int>(*it);
@@ -74,7 +65,6 @@ public:
         std::cout << std::endl;
     }
     
-    // Function to add a digit at the back
     void push_back(unsigned char digit) {
         if (digit >= 13) {
             throw std::out_of_range("Invalid digit for base-13 system");
@@ -82,7 +72,6 @@ public:
         digits.push_back(digit);
     }
 
-    // Get digit at specific index
     unsigned char operator[](size_t index) const {
         if (index >= digits.size()) {
             throw std::out_of_range("Index out of bounds");
@@ -90,7 +79,6 @@ public:
         return digits[index];
     }
 
-    // Get size of the number (number of digits)
     size_t size() const {
         return digits.size();
     }
