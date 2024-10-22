@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(ThirteenProject)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+add_subdirectory(googletest)
+
+add_executable(ThirteenTest test_thirteen.cpp thirteen.cpp thirteen_digit.cpp)
+
+target_link_libraries(ThirteenTest gtest gtest_main)
+
+enable_testing()
+
+add_test(NAME ThirteenTest COMMAND ThirteenTest)
